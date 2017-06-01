@@ -1,6 +1,10 @@
 module.exports = {
   //funciones del controlador
   index: function(req, res, next) {
-    res.render('index', { title: 'Express' });
+    res.render('login', {
+            message: req.flash('info'),
+            authmessage: req.flash('authmessage'),
+            verify: req.flash('verify')
+        });
   }
 }
