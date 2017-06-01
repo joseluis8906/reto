@@ -8,23 +8,18 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var routes = require('./routes/routes');
 var passport = require('passport');
-require('./passport/passport')(passport);
 
-//var index = require('./routes/index');
-//var users = require('./routes/users');
 
 var app = express();
 
 app.use(cookieParser());
-
-var expireDate = new Date(Date.now() + (60 * 60 * 1000) * (24 * 30 * 6));
+var expiryDate = new Date(Date.now() + (60 * 60 * 1000) * (24 * 30 * 6)); // 1 hour
 app.use(session({
-  secret: 'AHJ6L-9KD26-Y0BW4-QJT71-8CVAF',
+  secret: '@ChupemeEstePenco2017',
+  cookie: {expires: expiryDate},
   resave: true,
-  cookie: {expires: expireDate},
   saveUninitialized: true
 }));
-
 app.use(flash());
 
 // view engine setup
@@ -36,14 +31,10 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(cookieParser());
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use('/', routes);
-//app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

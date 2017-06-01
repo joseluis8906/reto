@@ -1,8 +1,6 @@
 module.exports = {
-    
-    index: function (req, res, next)
-    {
-        res.render('index');
-    }
-    
-};
+  //funciones del controlador
+  index: function(req, res, next) {
+    res.render('index', { title: 'Express' });
+  }
+}
