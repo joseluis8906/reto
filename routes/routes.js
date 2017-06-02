@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-var express = require('express');
-var router = express.Router();
-var passport = require('passport');
-var controllers = require('controllers');
-
-router.get('/', controllers.HomeController.index);
-
-module.exports = router;
-=======
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
@@ -35,4 +25,3 @@ router.get('/verify', controllers.UserController.verificar);
 router.get('/app', AuthMiddleware.isLogged, controllers.HomeController.indexApp);
 
 module.exports = router;
->>>>>>> 0871a72ce3898b1c45ab0b56023a13f488287701

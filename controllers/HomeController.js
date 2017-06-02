@@ -1,14 +1,7 @@
 module.exports = {
   //funciones del controlador
   index: function(req, res, next) {
-<<<<<<< HEAD
-    res.render('login', 
-    {
-            message: req.flash('info'),
-            authmessage: req.flash('authmessage'),
-            verify: req.flash('verify')
-    });
-=======
+
     res.render('login', {
       message: req.flash('info'),
       authmessage: req.flash('authmessage'),
@@ -27,6 +20,5 @@ module.exports = {
       isAuthenticated: req.isAuthenticated(),
       user: req.user
     })
->>>>>>> 2864874f24a425462dc14aad44dc136add8d8901
   }
 }
