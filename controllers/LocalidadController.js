@@ -31,9 +31,9 @@ module.exports = {
       }
   },
 
-  select: function(req, res, codigo)
-  {
-      db.one ('SELECT "nombre", "poblacion", "altitud", "temperatura", "superficie", "fundacion" FROM "localidad" WHERE "codigo"=$1', [codigo])
+  select: function(req, res, next)
+  {      
+      db.one ('SELECT "nombre", "poblacion", "altitud", "temperatura", "superficie", "fundacion" FROM "localidad" WHERE "codigo"=$1', [req.query.codigo])
       .then(function(data)
       {
           res.send (JSON.stringify(data));

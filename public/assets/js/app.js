@@ -146,13 +146,13 @@ ConsumoYa = {
 
   enviarGET: function(url, parametro, valor, callBack) {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", url);
+    xhttp.open("GET", url + '?' + parametro + "=" + encodeURIComponent(valor));
     xhttp.onreadystatechange = function() {
       if (this.readyState === 4 && this.status == 200) {
         callBack(JSON.parse(xhttp.responseText));
       }
     };
-    xhttp.send(parametro + "=" + encodeURIComponent(valor));
+    xhttp.send();
   },
 
   initMaterialWizard: function() {
