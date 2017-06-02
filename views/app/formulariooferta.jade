@@ -14,7 +14,7 @@ block contenido
             span(class="icon-bar")
             span(class="icon-bar")
             span(class="icon-bar")
-          a(class="navbar-brand" href="#") Demanda
+          a(class="navbar-brand" href="#") Oferta
         div(id="saludo", class="nav navbar-nav navbar-right", style="margin-right:30px")
           h4(id="saludo-contenido", style="text-align:right")
 
@@ -25,8 +25,8 @@ block contenido
             div(class="card wizard-card" data-color="rose" id="wizardProfile")
 
               div(class="wizard-header")
-                h3(class="wizard-title") Demanda
-                h5 Formulario de ingreso de demanda
+                h3(class="wizard-title") Oferta
+                h5 Formulario de ingreso de oferta
               div(class="wizard-navigation")
                 ul
                   li
@@ -46,34 +46,9 @@ block contenido
                           span(class="input-group-addon")
                             i(class="material-icons") flag
                           div(id="lbcod" class="form-group label-floating")
-                            label(class="control-label") Municipio
+                            label(class="control-label") Proveedor
                             select(id="codigo" class="form-control valid" aria-invalid="false" onchange="javascript:cambiarSelect();")
                               option(url="../assets/img/image_placeholder.jpg" value="") 
-                              option(value="001", url="../assets/img/flags/001.png") Aguachica
-                              option(value="002", url="../assets/img/flags/002.png") Agustín Codazzi
-                              option(value="003", url="../assets/img/flags/003.png") Astrea
-                              option(value="004", url="../assets/img/flags/004.png") Becerril
-                              option(value="005", url="../assets/img/flags/005.png") Bosconia
-                              option(value="006", url="../assets/img/flags/006.png") Chimichagua
-                              option(value="007", url="../assets/img/flags/007.png") Chiriguana
-                              option(value="008", url="../assets/img/flags/008.png") Curumani
-                              option(value="009", url="../assets/img/flags/009.png") El Copey
-                              option(value="010", url="../assets/img/flags/010.png") El Paso
-                              option(value="011", url="../assets/img/flags/011.png") Gamarra
-                              option(value="012", url="../assets/img/flags/012.png") González
-                              option(value="013", url="../assets/img/flags/013.png") La Gloria
-                              option(value="014", url="../assets/img/flags/014.png") La Jagua de Ibirico
-                              option(value="015", url="../assets/img/flags/015.png") La Paz
-                              option(value="016", url="../assets/img/flags/016.png") Manaure Balcón del Cesar
-                              option(value="017", url="../assets/img/flags/017.png") Pailitas
-                              option(value="018", url="../assets/img/flags/018.png") Pelaya
-                              option(value="019", url="../assets/img/flags/019.png") Pueblo Bello
-                              option(value="020", url="../assets/img/flags/020.png") Rio de Oro
-                              option(value="021", url="../assets/img/flags/021.png") San Alberto
-                              option(value="022", url="../assets/img/flags/022.png") San Diego
-                              option(value="023", url="../assets/img/flags/023.png") San Martin
-                              option(value="024", url="../assets/img/flags/024.png") Tamalameque
-                              option(value="025", url="../assets/img/flags/025.png") Valledupar
                             span(class="material-input")  
 
                       div(class="col-sm-6 ")
@@ -85,13 +60,40 @@ block contenido
                             select(id="producto" class="form-control valid" aria-invalid="false" onchange="javascript:cambiarSelect();")
                               option(url="../assets/img/image_placeholder.jpg" value="")
                             span(class="material-input")  
-                                  
-                      div(class="input-group")
-                        span(class="input-group-addon")
-                          i(class="material-icons") shopping_cart
-                        div(id="lbalt" class="form-group label-floating")
-                          label(class="control-label") Promedio Consumo
-                          input(id="altitud" type="numeric" class="form-control")
+                      
+                      div(class="col-sm-6 ")              
+                        div(class="input-group")
+                          span(class="input-group-addon")
+                            i(class="material-icons") local_convenience_store
+                          div(id="lbalt" class="form-group label-floating")
+                            label(class="control-label") Origen
+                            input(id="altitud" type="numeric" class="form-control")
+                            
+                      
+                      div(class="col-sm-6 ")              
+                        div(class="input-group")
+                            span(class="input-group-addon")
+                              i(class="material-icons") shopping_cart
+                            div(id="lbalt" class="form-group label-floating")
+                              label(class="control-label") Cantidad
+                              input(id="altitud" type="numeric" class="form-control")
+                              
+                      div(class="col-sm-6 ")
+                        div(class="input-group")
+                            span(class="input-group-addon")
+                              i(class="material-icons") attach_money
+                            div(id="lbalt" class="form-group label-floating")
+                              label(class="control-label") Precio
+                              input(id="altitud" type="numeric" class="form-control")
+                              
+                              
+                      div(class="col-sm-6 ")
+                        div(class="input-group")
+                            span(class="input-group-addon")
+                              i(class="material-icons") casino
+                            div(id="lbalt" class="form-group label-floating")
+                              label(class="control-label") Embalaje
+                              input(id="altitud" type="numeric" class="form-control")      
 
 
               div(class="wizard-footer")  

@@ -28,38 +28,63 @@ block contenido
               div(class="card-header card-header-icon", data-background-color="green")
                 i(class="material-icons") language
               div(class="card-content")
-                h4(class="card-title") Consumo y demanda del departamento del Cesar
-                div(class="col-md-5", id="tabla-mapa")
+                h4(class="card-title") Oferta y demanda del departamento del Cesar
+                div(class="col-md-3", id="tabla-mapa")
                   div(class="table-responsive table-sales")
                     table(class="table")
                       tbody
                         tr
-                          td(style="font-weight:bold") Municipio
-                          td(class="text-right", style="font-weight:bold") Demanda
-                          td(td class="text-right", style="font-weight:bold") Consumo
+                          td(style="font-weight:bold") Producto
+                          td(class="text-right", style="font-weight:bold") Oferta
+                          td(td class="text-right", style="font-weight:bold") Demanda
                         tr
-                          td municipio 1
+                          td Producto 1
                           td(class="text-right") 2.920
                           td(td class="text-right") 53.29%
                         tr
-                          td municipo 2
+                          td Producto 2
                           td(class="text-right") 2.920
                           td(td class="text-right") 53.29%
                         tr
-                          td municipo 3
+                          td Producto 3
                           td(class="text-right") 2.920
                           td(td class="text-right") 53.29%
                         tr
-                          td municipo 4
+                          td Producto 4
                           td(class="text-right") 2.920
                           td(td class="text-right") 53.29%
                         tr
-                          td municipo 5
+                          td Producto 5
                           td(class="text-right") 2.920
                           td(td class="text-right") 53.29%
                           
-                div(class="col-md-6 col-md-offset-1")
+                div(class="col-md-4 col-md-offset-1")
                   object(id="cesar-mapa", class="map", data="../assets/img/cesar.svg", type="image/svg+xml", style="height: auto!important;")
+                
+                div(class="col-md-4")
+                  div(class="row")
+                    div(class="table-responsive table-sales")
+                      table(class="table")
+                        tr
+                          th(colspan="2" style="text-align:center") Municipio
+                        tr
+                          td(style="text-align:center") Poblacion
+                          td(style="text-align:center") Altitud
+                        tr
+                          td 
+                          td 
+                        tr
+                          td(style="text-align:center") Superficie
+                          td(style="text-align:center") Temperatura
+                        tr
+                          td 
+                          td 
+                        tr
+                          th(colspan="2" style="text-align:center") Fundacion
+                        tr
+                          td 
+                  
+                  
   
 
   include ../templates/footer
