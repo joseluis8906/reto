@@ -34,4 +34,8 @@ router.get('/app/municipio-file', AuthMiddleware.isLogged, controllers.Localidad
 
 router.get('/app/localidad/select', controllers.LocalidadController.select);
 
+router.get('/app/proveedores/insert', controllers.ProveedorController.insert);
+router.get('/app/proveedores/select', controllers.ProveedorController.select);
+router.get('/app/proveedores/insert', AuthMiddleware.isLogged, controllers.ProveedorController.formulario);
+
 module.exports = router;
