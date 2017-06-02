@@ -43,6 +43,10 @@ function cambiarSelect() {
       $("#lbdtemp").removeClass("is-empty");
       $("#lbfun").removeClass("is-empty");
     }
+    else
+    {
+      reset();
+    }
   });
 }
 

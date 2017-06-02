@@ -50,4 +50,6 @@ router.get('/app/demanda', AuthMiddleware.isLogged, controllers.DemandaControlle
 
 router.post('/app/demanda/insert', AuthMiddleware.isLogged, controllers.DemandaController.insert);
 
+router.get('/app/demanda/selectall', AuthMiddleware.isLogged, controllers.DemandaController.select_all);
+
 module.exports = router;

@@ -109,8 +109,6 @@ function cesar_mapa() {
     svg.getElementById("valledupar")
   ];
 
-  window.dptos[24].style.fill = "rgb(76, 175, 80)";
-
   for (var i = 0; i < dptos.length; i++) {
     dptos[i].onclick = departamento;
     if (i<10)
@@ -148,7 +146,17 @@ function departamento()
     $("#MunFun").text(data.fundacion);
     $("#MunSup").text(data.superficie);
     $("#MunTem").text(data.temperatura);
+  });
+  //producto_nombre; promedio_consumo
+
+  ConsumoYa.enviarGET("/app/demanda/selectall", "localidad_codigo", this.codigo, function(data){
+    for(var i=0; i < data.length; i++){
+      if(data.codigo == this.codigo){
+        $('#ofert').append('<tr><td>{0}</td><td id="oferta{3}" class="text-right"></td><td class="text-right">{2}</td></tr>').replace("{0}", data[i].producto_nombre).replace("{2}", data[i].promedio_consumo).replace("{3}", i);
+      }
+    }
   })
+
 }
 
 ConsumoYa = {
