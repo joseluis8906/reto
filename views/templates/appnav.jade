@@ -1,0 +1,51 @@
+div(class="sidebar-wrapper")
+  div(class="user")
+    div(class="photo")
+      img(src="../assets/img/default.jpg")
+    div(class="info")
+      a(data-toggle="collapse", href="#collapsePerfil", class="collapsed")
+        if user.nombre == null
+          = user.correo
+        else
+          = user.nombre
+        b(class="caret")
+      div(class="collapse" id="collapsePerfil")
+        ul(class="nav")
+          li
+            a(href="cuenta", style="text-align:left") 
+              i(class="material-icons", style="margin-top:-5px") location_on
+              | Mi cuenta
+          li
+            a(href="../auth/logout", style="text-align:left") 
+              i(class="material-icons", style="margin-top:-5px") exit_to_app
+              | Cerrar sesión
+    div(class="info")
+      a(id="ciudad")
+  ul(class="nav")
+    li(class="active")
+      a(href="/app")
+        i(class="material-icons") dashboard
+        p Inicio
+    li
+      a(href="plantaciones")
+        i(class="fa fa-map")
+        p Plantaciones
+    li
+      a(href="lotes")
+        i(class="fa fa-map-marker")
+        p Lotes
+    li
+      a(href="registro-pc")
+        i(class="fa fa-database")
+        p registros PC
+    li
+      a(data-toggle="collapse" href="#menuExportar")
+        i(class="fa fa-cloud-download")
+        p Exportar
+          b(class="caret")
+      div(class="collapse" id="menuExportar")
+        ul(class="nav")
+          li
+            a(href="exportar?accion=datos") Datos
+          li
+            a(href="exportar?accion=grafica") Graficas
