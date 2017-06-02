@@ -31,4 +31,7 @@ router.post('/app/localidad/insert', AuthMiddleware.isLogged, controllers.Locali
 router.get('/app/municipio', AuthMiddleware.isLogged, controllers.LocalidadController.formulario);
 router.get('/app/municipio-file', AuthMiddleware.isLogged, controllers.LocalidadController.cargaMasiva);
 
+
+router.get('/app/localidad/select', controllers.LocalidadController.select);
+
 module.exports = router;

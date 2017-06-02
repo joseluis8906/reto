@@ -31,6 +31,19 @@ module.exports = {
       }
   },
 
+  select: function(req, res, codigo)
+  {
+      db.one ('SELECT "nombre", "poblacion", "altitud", "temperatura", "superficie", "fundacion" FROM "localidad" WHERE "codigo"=$1', [codigo])
+      .then(function(data)
+      {
+          res.send (JSON.stringify(data));
+      })
+      .catch(function(error)
+      {
+          res.send ({result: false});
+      })
+  },
+
   formulario: function(req, res, next) {
     res.render('app/formulariolocalidad', {
       isAuthenticated: req.isAuthenticated(),
