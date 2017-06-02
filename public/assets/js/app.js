@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
-
-
+  setTimeout(cesar_mapa, 1000);
 
   if (navigator.geolocation) {
     navigator.geolocation.watchPosition(function(position) {
@@ -82,6 +81,57 @@ $(document).ready(function() {
   setTimeout(ConsumoYa.mapa(),2000);
 });
 
+function cesar_mapa ()
+{
+    var svg = document.getElementById ("cesar-mapa").getSVGDocument ();
+    window.dptos = [
+      svg.getElementById("aguachica"),
+      svg.getElementById("agustin_codazzi"),
+      svg.getElementById("astrea"),
+      svg.getElementById("becerril"),
+      svg.getElementById("bosconia"),
+      svg.getElementById("chimichagua"),
+      svg.getElementById("chiriguana"),
+      svg.getElementById("curumani"),
+      svg.getElementById("el_copey"),
+      svg.getElementById("el_paso"),
+      svg.getElementById("gamarra"),
+      svg.getElementById("gonzalez"),
+      svg.getElementById("la_gloria"),
+      svg.getElementById("la_jagua_de_ibirico"),
+      svg.getElementById("la_paz"),
+      svg.getElementById("manaure"),
+      svg.getElementById("pailitas"),
+      svg.getElementById("pelaya"),
+      svg.getElementById("pueblo_bello"),
+      svg.getElementById("rio_de_oro"),
+      svg.getElementById("san_alberto"),
+      svg.getElementById("san_diego"),
+      svg.getElementById("san_martin"),
+      svg.getElementById("tamalameque"),
+      svg.getElementById("valledupar")
+    ];
+
+    for (var i = 0; i < dptos.length; i++)
+    {
+        dptos[i].onclick = departamento;
+    }
+}
+
+function departamento ()
+{
+    for (var i = 0; i < window.dptos.length; i++)
+    {
+        if (window.dptos[i].id === this.id)
+        {
+            window.dptos[i].style.fill = "rgb(204, 204, 204)";
+        }
+        else
+        {
+            window.dptos[i].style.fill = "rgb(249, 249, 249)";
+        }
+    }
+}
 
 ConsumoYa = {
 
