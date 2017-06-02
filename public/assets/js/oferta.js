@@ -39,7 +39,7 @@ $(document).ready(function(){
 
 function guardar ()
 {
-    ConsumoYa.enviarPOST("demanda/insert", "info", { proveedor_codigo: $('#proveedor').val(), origen: $("#origen").val(), cantidad: $("#cantidad").val(), precio: $("#precio").val(), embalaje:$("#embalaje").val(), producto_codigo: $("#producto").val() }, function(data){console.log(data);});
+    ConsumoYa.enviarPOST("oferta/insert", "info", { proveedor_codigo: $('#proveedor').val(), origen: $("#origen").val(), cantidad: $("#cantidad").val(), precio: $("#precio").val(), embalaje:$("#embalaje").val(), producto_codigo: $("#producto").val() }, function(data){console.log(data);});
     msjOK();
     reset();
 }

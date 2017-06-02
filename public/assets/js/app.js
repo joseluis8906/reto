@@ -115,10 +115,10 @@ function cesar_mapa() {
     dptos[i].onclick = departamento;
     if (i<10)
     {
-      dptos[i].codigo="00"+i
+      dptos[i].codigo="00"+(i+1)
     }
     else {
-      dptos[i].codigo="0"+i
+      dptos[i].codigo="0"+(i+1)
     }
 
   }
@@ -138,6 +138,8 @@ function departamento()
       window.dptos[i].style.fill = "rgb(249, 249, 249)";
     }
   }
+
+  console.log(this.codigo);
 
   ConsumoYa.enviarGET("/app/localidad/select", "codigo", this.codigo, function(data){
     $("#MunNom").text(data.nombre);

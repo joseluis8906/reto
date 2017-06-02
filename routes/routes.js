@@ -45,6 +45,7 @@ router.post('/app/productos/insert', AuthMiddleware.isLogged, controllers.Produc
 router.get("/app/productos/selectall", AuthMiddleware.isLogged, controllers.ProductoController.select_all);
 
 router.get('/app/oferta', AuthMiddleware.isLogged, controllers.OfertaController.formulario);
+router.post('/app/oferta/insert', AuthMiddleware.isLogged, controllers.OfertaController.insert);
 router.get('/app/demanda', AuthMiddleware.isLogged, controllers.DemandaController.formulario);
 
 router.post('/app/demanda/insert', AuthMiddleware.isLogged, controllers.DemandaController.insert);
