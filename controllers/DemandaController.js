@@ -13,7 +13,7 @@ module.exports = {
               res.send({result: true});
           })
           .catch(error => {
-              db.one('UPDATE "producto_localidad" SET "promedio_consumo"=$1 FROM (SELECT "producto"."id" AS "producto_id", "localidad"."id" AS "localidad_id" FROM "producto" INNER JOIN "localidad" ON "producto"."codigo"=$2 AND "localidad"."codigo"=$3) AS "all" WHERE "producto_localidad"."producto_id"="all"."producto_id" AND "producto_localidad"."localidad_id"="all"."localidad_id" RETURNING "id"', [info.promedio_consumo, info.producto_codigo, info.localidad_codigo])
+              db.one('UPDATE "producto_localidad" SET "promedio_consumo"=$1 FROM (SELECT "producto"."id" AS "producto_id", "localidad"."id" AS "localidad_id" FROM "producto" INNER JOIN "localidad" ON "producto"."codigo"=$2 AND "localidad"."codigo"=$3) AS "all" WHERE "producto_localidad"."producto_id"="all"."producto_id" AND "producto_localidad"."localidad_id"="all"."localidad_id" RETURNING "id"', [info.promedio_consumo, info.codigo_producto, info.codigo_localidad])
               .then(data => {
                   res.send({result: true});
               })
