@@ -3,7 +3,7 @@ var db = pgp("postgres://reto:reto123456789@172.16.16.72:5432/reto");
 
 module.exports = {
   //funciones del controlador
-  insert: function(req, res, next) 
+  insert: function(req, res, next)
   {
       var info = JSON.parse(req.body.info);
       if(info.codigo_localidad && info.codigo_producto && info.promedio_consumo)
@@ -31,7 +31,7 @@ module.exports = {
   },
 
   select: function(req, res, next)
-  {      
+  {
       db.one ('SELECT "promedio_consumo" FROM "producto_localidad" INNER JOIN "localidad" ON "producto_localidad"."localidad_id"="localidad"."id" INNER JOIN "producto" ON "producto_localidad"."producto_id"="producto"."id" AND "producto"."codigo"=$1 AND "localidad"."codigo"=$2', [req.query.producto_codigo, req.query.localidad_codigo])
       .then(function(data)
       {

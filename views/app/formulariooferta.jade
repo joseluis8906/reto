@@ -1,0 +1,109 @@
+extends ../templates/appDefault
+
+block contenido
+  div(class="main-panel")
+    nav(class="navbar navbar-transparent navbar-absolute")
+      div( class="container-fluid")
+        div(class="navbar-minimize")
+          button(id="minimizeSidebar", class="btn btn-round btn-white btn-fill btn-just-icon")
+            i(class="material-icons visible-on-sidebar-regular") more_vert
+            i(class="material-icons visible-on-sidebar-mini") view_list
+        div(class="navbar-header")
+          button(type="button" class="navbar-toggle" data-toggle="collapse")
+            span(class="sr-only") Toggle navigation
+            span(class="icon-bar")
+            span(class="icon-bar")
+            span(class="icon-bar")
+          a(class="navbar-brand" href="#") Oferta
+        div(id="saludo", class="nav navbar-nav navbar-right", style="margin-right:30px")
+          h4(id="saludo-contenido", style="text-align:right")
+
+    div(class="content")
+      div(class="container-fluid")
+        div(class="col-sm-8 col-sm-offset-2")
+          div(class="wizard-container")
+            div(class="card wizard-card" data-color="rose" id="wizardProfile")
+
+              div(class="wizard-header")
+                h3(class="wizard-title") Oferta
+                h5 Formulario de ingreso de oferta
+              div(class="wizard-navigation")
+                ul
+                  li
+                    a(data-toggle="tab", href="#formulario") Ingresar
+              div(class="tab-content")
+                div(class="tab-pane" id="formulario")
+                  div(class="row")
+                    h4(class="info-text") Ingrese la informacion solicitada.
+                    div(class="col-sm-4 col-sm-offset-1")
+                      div(class="picture-container")
+                        div(class="picture" style="height:100%!important;width:100%!important;border-radius: 5%!important;")
+                          img(src="../assets/img/image_placeholder.jpg" class="picture-src" id="bandera" title="")
+                    div(class="col-sm-6")
+
+                      div(class="col-sm-6 ")
+                        div(class="input-group")
+                          span(class="input-group-addon")
+                            i(class="material-icons") flag
+                          div(id="lbprov" class="form-group label-floating")
+                            label(class="control-label") Proveedor
+                            select(id="proveedor" class="form-control valid" aria-invalid="false")
+                              option(url="../assets/img/image_placeholder.jpg" value="") 
+                            span(class="material-input")  
+
+                      div(class="col-sm-6 ")
+                        div(class="input-group")
+                          span(class="input-group-addon")
+                            i(class="material-icons") cake
+                          div(id="lbprod" class="form-group label-floating")
+                            label(class="control-label") Productos
+                            select(id="producto" class="form-control valid" aria-invalid="false")
+                              option(url="../assets/img/image_placeholder.jpg" value="")
+                            span(class="material-input")  
+                      
+                      div(class="col-sm-6 ")              
+                        div(class="input-group")
+                          span(class="input-group-addon")
+                            i(class="material-icons") local_convenience_store
+                          div(id="lborigen" class="form-group label-floating")
+                            label(class="control-label") Origen
+                            input(id="origen" type="numeric" class="form-control")
+                            
+                      
+                      div(class="col-sm-6 ")              
+                        div(class="input-group")
+                            span(class="input-group-addon")
+                              i(class="material-icons") shopping_cart
+                            div(id="lbcant" class="form-group label-floating")
+                              label(class="control-label") Cantidad
+                              input(id="cantidad" type="numeric" class="form-control")
+                              
+                      div(class="col-sm-6 ")
+                        div(class="input-group")
+                            span(class="input-group-addon")
+                              i(class="material-icons") attach_money
+                            div(id="lbprec" class="form-group label-floating")
+                              label(class="control-label") Precio
+                              input(id="precio" type="numeric" class="form-control")
+                              
+                              
+                      div(class="col-sm-6 ")
+                        div(class="input-group")
+                            span(class="input-group-addon")
+                              i(class="material-icons") casino
+                            div(id="lbembal" class="form-group label-floating")
+                              label(class="control-label") Embalaje
+                              input(id="embalaje" type="numeric" class="form-control")      
+
+
+              div(class="wizard-footer")  
+                div(class="pull-right")
+                  div(class='btn btn-next btn-fill btn-rose btn-wd' id='guardar' onclick="javascript:guardar();") Guardar
+                div(class="clearfix")
+
+
+     include ../templates/footer
+     script(src="../assets/js/oferta.js")
+     script(type="text/javascript").
+        ConsumoYa.initMaterialWizard();
+    

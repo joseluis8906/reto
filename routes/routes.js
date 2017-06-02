@@ -34,8 +34,22 @@ router.get('/app/municipio-file', AuthMiddleware.isLogged, controllers.Localidad
 
 router.get('/app/localidad/select', controllers.LocalidadController.select);
 
-router.get('/app/proveedores/insert', controllers.ProveedorController.insert);
+router.post('/app/proveedores/insert', controllers.ProveedorController.insert);
 router.get('/app/proveedores/select', controllers.ProveedorController.select);
 router.get('/app/proveedores', AuthMiddleware.isLogged, controllers.ProveedorController.formulario);
+router.get('/app/proveedores/selectall', AuthMiddleware.isLogged, controllers.ProveedorController.select_all);
 
+router.get('/app/productos', AuthMiddleware.isLogged, controllers.ProductoController.formulario);
+router.get('/app/productos/select', controllers.ProductoController.select_all);
+router.post('/app/productos/insert', AuthMiddleware.isLogged, controllers.ProductoController.insert);
+router.get("/app/productos/selectall", AuthMiddleware.isLogged, controllers.ProductoController.select_all);
+
+router.get('/app/oferta', AuthMiddleware.isLogged, controllers.OfertaController.formulario);
+router.post('/app/oferta/insert', AuthMiddleware.isLogged, controllers.OfertaController.insert);
+router.get('/app/demanda', AuthMiddleware.isLogged, controllers.DemandaController.formulario);
+
+router.post('/app/demanda/insert', AuthMiddleware.isLogged, controllers.DemandaController.insert);
+
+router.get('/app/demanda/selectall', AuthMiddleware.isLogged, controllers.DemandaController.select_all);
+router.get('/app/oferta/selectall', AuthMiddleware.isLogged, controllers.OfertaController.select_all);
 module.exports = router;
