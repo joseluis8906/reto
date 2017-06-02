@@ -6,6 +6,7 @@ module.exports = {
   insert: function(req, res, next) 
   {
       var info = JSON.parse(req.body.info);
+      console.log(info);
       if(info.origen && info.cantidad && info.precio && info.embalaje && info.proveedor_codigo && info.producto_codigo)
       {
           db.one('INSERT INTO "proveedor_producto"("proveedor_id", "producto_id", "origen", "cantidad", "precio", "embalaje") SELECT "proveedor"."id", "producto"."id", $1 FROM "proveedor" INNER JOIN "producto" ON "proveedor"."codigo"=$2 AND "producto"."codigo"=$3 RETURNING "id"', [info.origen, info.cantidad, info.precio, info.embalaje, info.proveedor_codigo, info.producto_codigo])
