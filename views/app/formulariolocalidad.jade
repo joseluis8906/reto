@@ -1,13 +1,30 @@
 extends ../templates/appDefault
 
 block contenido
-  div(class="content")
-    div(class="container-fluid")
-      div(class="col-sm-8 col-sm-offset-2")
-        div(class="wizard-container")
-          div(class="card wizard-card" data-color="rose" id="wizardProfile")
-            div(class="wizard-header")
-              h3(class="wizard-title") Agregar municipio
+  div(class="main-panel")
+    nav(class="navbar navbar-transparent navbar-absolute")
+      div( class="container-fluid")
+        div(class="navbar-minimize")
+          button(id="minimizeSidebar", class="btn btn-round btn-white btn-fill btn-just-icon")
+            i(class="material-icons visible-on-sidebar-regular") more_vert
+            i(class="material-icons visible-on-sidebar-mini") view_list
+        div(class="navbar-header")
+          button(type="button" class="navbar-toggle" data-toggle="collapse")
+            span(class="sr-only") Toggle navigation
+            span(class="icon-bar")
+            span(class="icon-bar")
+            span(class="icon-bar")
+          a(class="navbar-brand" href="#") Inicio
+        div(id="saludo", class="nav navbar-nav navbar-right", style="margin-right:30px")
+          h4(id="saludo-contenido", style="text-align:right")
+
+    div(class="content")
+      div(class="container-fluid")
+        div(class="col-sm-8 col-sm-offset-2")
+          div(class="wizard-container")
+            div(class="card wizard-card" data-color="rose" id="wizardProfile")
+              div(class="wizard-header")
+                h3(class="wizard-title") Agregar municipio
               
    script(src="../assets/js/jquery.min.js", type="text/javascript")
    script(src="../assets/js/app.js", type="text/javascript")
