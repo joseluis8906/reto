@@ -24,4 +24,9 @@ router.get('/auth/logout', controllers.UserController.logout);
 router.get('/verify', controllers.UserController.verificar);
 router.get('/app', AuthMiddleware.isLogged, controllers.HomeController.indexApp);
 
+
+
+//localidad
+router.post('/app/localidad/insert', AuthMiddleware.isLogged, controllers.LocalidadController.insert);
+
 module.exports = router;
