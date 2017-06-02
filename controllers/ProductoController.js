@@ -45,7 +45,7 @@ module.exports = {
 
   select_all: function(req, res, next)
   {
-        db.any ('SELECT "codigo", "nombre" FROM "producto"')
+        db.any ('SELECT "codigo", "nombre" FROM "producto" ORDER BY "codigo" ASC')
         .then(function(data)
         {
               res.send (JSON.stringify(data));
