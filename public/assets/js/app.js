@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  setTimeout(cesar_mapa, 1000);
+  //setTimeout(cesar_mapa, 1000);
 
   if (navigator.geolocation) {
     navigator.geolocation.watchPosition(function(position) {
@@ -52,7 +52,7 @@ $(document).ready(function() {
     } else if (hora > 18 && hora < 24) {
       contenido = 'Buenas noches <img src="../assets/img/noche.png" width="50px"/>';
     } else {
-      contenido = 'Buenas días <img src="../assets/img/dia.png" width="50px"/>';
+      contenido = 'Buenos días <img src="../assets/img/dia.png" width="50px"/>';
     }
     document.getElementById("saludo-contenido").innerHTML = contenido;
   }
@@ -77,60 +77,57 @@ $(document).ready(function() {
       })
     }
   });
-
-  setTimeout(ConsumoYa.mapa(),2000);
 });
 
-function cesar_mapa ()
-{
-    var svg = document.getElementById ("cesar-mapa").getSVGDocument ();
-    window.dptos = [
-      svg.getElementById("aguachica"),
-      svg.getElementById("agustin_codazzi"),
-      svg.getElementById("astrea"),
-      svg.getElementById("becerril"),
-      svg.getElementById("bosconia"),
-      svg.getElementById("chimichagua"),
-      svg.getElementById("chiriguana"),
-      svg.getElementById("curumani"),
-      svg.getElementById("el_copey"),
-      svg.getElementById("el_paso"),
-      svg.getElementById("gamarra"),
-      svg.getElementById("gonzalez"),
-      svg.getElementById("la_gloria"),
-      svg.getElementById("la_jagua_de_ibirico"),
-      svg.getElementById("la_paz"),
-      svg.getElementById("manaure"),
-      svg.getElementById("pailitas"),
-      svg.getElementById("pelaya"),
-      svg.getElementById("pueblo_bello"),
-      svg.getElementById("rio_de_oro"),
-      svg.getElementById("san_alberto"),
-      svg.getElementById("san_diego"),
-      svg.getElementById("san_martin"),
-      svg.getElementById("tamalameque"),
-      svg.getElementById("valledupar")
-    ];
+function cesar_mapa() {
+  var svg = document.getElementById("cesar-mapa").getSVGDocument();
+  window.dptos = [
+    svg.getElementById("aguachica"),
+    svg.getElementById("agustin_codazzi"),
+    svg.getElementById("astrea"),
+    svg.getElementById("becerril"),
+    svg.getElementById("bosconia"),
+    svg.getElementById("chimichagua"),
+    svg.getElementById("chiriguana"),
+    svg.getElementById("curumani"),
+    svg.getElementById("el_copey"),
+    svg.getElementById("el_paso"),
+    svg.getElementById("gamarra"),
+    svg.getElementById("gonzalez"),
+    svg.getElementById("la_gloria"),
+    svg.getElementById("la_jagua_de_ibirico"),
+    svg.getElementById("la_paz"),
+    svg.getElementById("manaure"),
+    svg.getElementById("pailitas"),
+    svg.getElementById("pelaya"),
+    svg.getElementById("pueblo_bello"),
+    svg.getElementById("rio_de_oro"),
+    svg.getElementById("san_alberto"),
+    svg.getElementById("san_diego"),
+    svg.getElementById("san_martin"),
+    svg.getElementById("tamalameque"),
+    svg.getElementById("valledupar")
+  ];
 
-    for (var i = 0; i < dptos.length; i++)
-    {
-        dptos[i].onclick = departamento;
-    }
+  window.dptos[24].style.fill = "rgb(76, 175, 80)";
+
+  for (var i = 0; i < dptos.length; i++) {
+    //var item = dptos[i];
+     //item.append("<title>"+item.id+"</title>");
+    dptos[i].onclick = departamento;
+  }
 }
 
-function departamento ()
-{
-    for (var i = 0; i < window.dptos.length; i++)
-    {
-        if (window.dptos[i].id === this.id)
-        {
-            window.dptos[i].style.fill = "rgb(204, 204, 204)";
-        }
-        else
-        {
-            window.dptos[i].style.fill = "rgb(249, 249, 249)";
-        }
+function departamento() {
+  for (var i = 0; i < window.dptos.length; i++) {
+
+    if (window.dptos[i].id === this.id) {
+      window.dptos[i].style.fill = "rgb(76, 175, 80)";
+      //data-toggle="tooltip" title="Hooray!"
+    } else {
+      window.dptos[i].style.fill = "rgb(249, 249, 249)";
     }
+  }
 }
 
 ConsumoYa = {
@@ -147,11 +144,96 @@ ConsumoYa = {
     xhttp.send(parametro + "=" + encodeURIComponent(JSON.stringify(valor)));
   },
 
-  mapa: function(){
-    var svg = document.getElementById("cesar-mapa").getSVGDocument();
-    console.log(svg);
+  enviarGET: function(url, parametro, valor, callBack) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", url);
+    xhttp.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status == 200) {
+        callBack(JSON.parse(xhttp.responseText));
+      }
+    };
+    xhttp.send(parametro + "=" + encodeURIComponent(valor));
+  },
+
+  initMaterialWizard: function() {
+
+    // Wizard Initialization
+    $('.wizard-card').bootstrapWizard({
+      'tabClass': 'nav nav-pills',
+
+      onNext: function(tab, navigation, index) {
+        var $valid = $('.wizard-card form').valid();
+        if (!$valid) {
+          $validator.focusInvalid();
+          return false;
+        }
+      },
+
+      onInit: function(tab, navigation, index) {
+
+        //check number of tabs and fill the entire row
+        var $total = navigation.find('li').length;
+        $width = 100;
+        var $wizard = navigation.closest('.wizard-card');
+
+        $display_width = $(document).width();
+
+        if ($display_width < 600 && $total > 3) {
+          $width = 50;
+        }
+
+        navigation.find('li').css('width', $width + '%');
+        $first_li = navigation.find('li:first-child a').html();
+        $moving_div = $('<div class="moving-tab">' + $first_li + '</div>');
+        $('.wizard-card .wizard-navigation').append($moving_div);
+        refreshAnimation($wizard, index);
+        $('.moving-tab').css('transition', 'transform 0s');
+      },
+
+      onTabShow: function(tab, navigation, index) {
+        var $total = navigation.find('li').length;
+        var $current = index + 1;
+
+        var $wizard = navigation.closest('.wizard-card');
+        refreshAnimation($wizard, index);
+      }
+    });
+
+    $('.set-full-height').css('height', 'auto');
+
+    $(window).resize(function() {
+      $('.wizard-card').each(function() {
+        $wizard = $(this);
+        index = $wizard.bootstrapWizard('currentIndex');
+        refreshAnimation($wizard, index);
+
+        $('.moving-tab').css({
+          'transition': 'transform 0s'
+        });
+      });
+    });
+
+    function refreshAnimation($wizard, index) {
+      total_steps = $wizard.find('li').length;
+      move_distance = $wizard.width() / total_steps;
+      step_width = move_distance;
+      move_distance *= index;
+
+      $current = index + 1;
+
+      if ($current == 1) {
+        move_distance -= 8;
+      } else if ($current == total_steps) {
+        move_distance += 8;
+      }
+
+      $wizard.find('.moving-tab').css('width', step_width);
+      $('.moving-tab').css({
+        'transform': 'translate3d(' + move_distance + 'px, 0, 0)',
+        'transition': 'all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1)'
+
+      });
+    }
   }
-
-
 
 }
