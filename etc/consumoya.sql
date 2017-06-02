@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS "producto"
 
 CREATE TABLE IF NOT EXISTS "producto_localidad"
 (
+    "id" BIGSERIAL PRIMARY KEY,
     "localidad_id" BIGINT REFERENCES "localidad" ("id") ON UPDATE CASCADE ON DELETE CASCADE,
     "producto_id" BIGINT REFERENCES "producto" ("id") ON UPDATE CASCADE ON DELETE CASCADE,
     "promedio_consumo" DECIMAL
@@ -45,6 +46,7 @@ CREATE TABLE IF NOT EXISTS "proveedor"
 
 CREATE TABLE IF NOT EXISTS "proveedor_producto"
 (
+    "id" BIGSERIAL PRIMARY KEY,
     "proveedor_id" BIGINT REFERENCES "proveedor" ("id") ON UPDATE CASCADE ON DELETE CASCADE,
     "producto_id" BIGINT REFERENCES "producto" ("id") ON UPDATE CASCADE ON DELETE CASCADE,
     "origen" TEXT,

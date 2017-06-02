@@ -8,12 +8,12 @@ module.exports = {
       var info = JSON.parse(req.body.info);
       if(info.codigo_localidad && info.codigo_producto && info.promedio_consumo)
       {
-          db.one('INSERT INTO "producto_localidad"("localidad_id", "producto_id", "promedio_consumo") SELECT "localidad"."id", "producto"."id", $1 INNER JOIN "localidad" ON "producto_localidad"."localidad_id"="localidad"."id" AND "localidad"."codigo"=$2 INNER JOIN "producto" ON "producto"."id"="producto_localidad"."producto_id" AND "producto"."codigo"=$3 RETURNING "id"', [info.promedio_consumo, info.codigo_localidad, info.codigo_producto])
+          db.one('INSERT INTO "producto_localidad"("localidad_id", "producto_id", "promedio_consumo") SELECT "localidad"."id", "producto"."id", $1 FROM "localidad" INNER JOIN "producto" ON "localidad"."codigo"=$2 AND "producto"."codigo"=$3 RETURNING "id"', [info.promedio_consumo, info.codigo_localidad, info.codigo_producto])
           .then(data => {
               res.send({result: true});
           })
           .catch(error => {
-              db.one('UPDATE "producto_localidad" SET "promedio_consumo"=$1 FROM (SELECT "producto"."id" AS "producto_id", "localidad"."id" AS "localidad_id" FROM "producto" INNER JOIN "localidad" WHERE "producto"."codigo"=$2 AND "localidad"."codigo"=$3) AS "all" WHERE "producto_localidad"."producto_id"="all"."producto_id" AND "producto_localidad".localidad_id"="all"."localidad_id" RETURNING "id"', [info.promedio_consumo, info.producto_codigo, info.localidad_codigo])
+              db.one('UPDATE "producto_localidad" SET "promedio_consumo"=$1 FROM (SELECT "producto"."id" AS "producto_id", "localidad"."id" AS "localidad_id" FROM "producto" INNER JOIN "localidad" ON "producto"."codigo"=$2 AND "localidad"."codigo"=$3) AS "all" WHERE "producto_localidad"."producto_id"="all"."producto_id" AND "producto_localidad"."localidad_id"="all"."localidad_id" RETURNING "id"', [info.promedio_consumo, info.producto_codigo, info.localidad_codigo])
               .then(data => {
                   res.send({result: true});
               })
