@@ -27,9 +27,16 @@ div(class="sidebar-wrapper")
         i(class="material-icons") dashboard
         p Inicio
     li
-      a(href="localidad")
+      a(data-toggle="collapse" href="#menuLocalidad")
         i(class="fa fa-map")
         p Localidad
+          b(class="caret")
+      div(class="collapse" id="menuLocalidad")
+        ul(class="nav")
+          li
+            a(href="/app/localidad") Formulario
+          li
+            a(href="/app/localidad-file") Carga masiva
     li
       a(href="lotes")
         i(class="fa fa-map-marker")
