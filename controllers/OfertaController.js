@@ -6,14 +6,14 @@ module.exports = {
   insert: function(req, res, next) 
   {
       var info = JSON.parse(req.body.info);
-      if(info.codigo && info.nombre)
+      if(info.origen && info.cantidad, info.precio && info.embalaje && info.proveedor_codigo && ingo.producto_codigo)
       {
           db.one('INSERT INTO "proveedor_producto"("proveedor_id", "producto_id", "origen", "cantidad", "precio", "embalaje") SELECT "proveedor"."id", "producto"."id", $1 FROM "proveedor" INNER JOIN "producto" ON "proveedor"."codigo"=$2 AND "producto"."codigo"=$3 RETURNING "id"', [info.origen, info.cantidad, info.precio, info.embalaje, info.proveedor_codigo, ingo.producto_codigo])
           .then(data => {
               res.send({result: true});
           })
           .catch(error => {
-              db.one('UPDATE "proveedor_producto" SET "origen"=$1, "cantidad"=$2, "precio"=$3, "embalaje"=$4 FROM (SELECT "producto"."id" AS "producto_id", "proveedor"."id" AS "proveedor_id" FROM "producto" INNER JOIN "proveedor" ON "producto"."codigo"=$2 AND "proveedor"."codigo"=$3) AS "all" WHERE "proveedor_producto"."producto_id"="all"."producto_id" AND "proveedor_producto"."proveedor_id"="all"."proveedor_id" RETURNING "id"', [info.origen, info.cantidad, info.precio, info.embalaje, info.producto_id, info.proveedor_id])
+              db.one('UPDATE "proveedor_producto" SET "origen"=$1, "cantidad"=$2, "precio"=$3, "embalaje"=$4 FROM (SELECT "producto"."id" AS "producto_id", "proveedor"."id" AS "proveedor_id" FROM "producto" INNER JOIN "proveedor" ON "producto"."codigo"=$2 AND "proveedor"."codigo"=$3) AS "all" WHERE "proveedor_producto"."producto_id"="all"."producto_id" AND "proveedor_producto"."proveedor_id"="all"."proveedor_id" RETURNING "id"', [info.origen, info.cantidad, info.precio, info.embalaje, info.producto_codigo, info.proveedor_codigo])
               .then(data => {
                   res.send({result: true});
               })
