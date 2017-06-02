@@ -33,7 +33,8 @@ CREATE TABLE IF NOT EXISTS "producto_localidad"
     "id" BIGSERIAL PRIMARY KEY,
     "localidad_id" BIGINT REFERENCES "localidad" ("id") ON UPDATE CASCADE ON DELETE CASCADE,
     "producto_id" BIGINT REFERENCES "producto" ("id") ON UPDATE CASCADE ON DELETE CASCADE,
-    "promedio_consumo" DECIMAL
+    "promedio_consumo" DECIMAL,
+    UNIQUE(localidad_id, producto_id)
 );
 
 CREATE TABLE IF NOT EXISTS "proveedor"
