@@ -12,8 +12,13 @@ CREATE TABLE IF NOT EXISTS "usuario"
 CREATE TABLE IF NOT EXISTS "localidad"
 (
     "id" BIGSERIAL PRIMARY KEY,
-    "nombre" TEXT UNIQUE,
-    "habitantes" BIGINT
+    "codigo" TEXT UNIQUE,
+    "nombre" TEXT,
+    "poblacion" BIGINT,
+    "altitud" INTEGER,
+    "temperatura" INTEGER,
+    "superficie" DECIMAL,
+    "fundacion" INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS "producto"
@@ -35,6 +40,7 @@ CREATE TABLE IF NOT EXISTS "producto_localidad"
 CREATE TABLE IF NOT EXISTS "proveedor"
 (
     "id" BIGSERIAL PRIMARY KEY,
+    "codigo" TEXT UNIQUE,
     "nombre" TEXT,
     "origen" TEXT
 );

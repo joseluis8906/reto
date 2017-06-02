@@ -61,9 +61,11 @@ block contenido
                 div(class="col-md-6 col-md-offset-1")
                   object(id="cesar-mapa", class="map", data="../assets/img/cesar.svg", type="image/svg+xml", style="height: auto!important;")
   
-  include ../templates/footer
+
+  include templates/footer
   script(type="text/javascript").
     setTimeout(cesar_mapa, 1000);
     //ConsumoYa.enviarPOST("app/localidad/insert", "info", {nombre:"gamarra",poblacion:15000}, function(data){console.log(data);});
     //ConsumoYa.mapa();
+
     
