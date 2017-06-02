@@ -44,6 +44,19 @@ module.exports = {
       })
   },
 
+  select_all: function(req, res, next)
+  {
+      db.any ('SELECT "proveedor"."nombre" AS "proveedor_nombre", "producto"."nombre" AS "producto_nombre", "proveedor_producto"."cantidad" FROM "proveedor" INNER JOIN "proveedor_producto" ON "proveedor"."id"="proveedor_producto"."proveedor_id" AND "proveedor"."codigo"=$1 INNER JOIN "producto" ON "producto"."id"="proveedor_producto"."producto_id"', [req.query.proveedor_codigo])
+      .then(function (data)
+      {
+            res.send (JSON.stringify(data));
+      })
+      .catch(function(error)
+      {
+            res.send ({result: false});
+      })
+  },
+
 
   formulario: function(req, res, next) {
     res.render('app/formulariooferta', {

@@ -43,6 +43,19 @@ module.exports = {
       })
   },
 
+  select_all: function(req, res, next)
+  {
+      db.any ('SELECT "localidad"."codigo" AS "codigo", "localidad"."nombre"AS "localidad_nombre", "producto"."nombre" AS "producto_nombre", "producto_localidad"."promedio_consumo" FROM "localidad" INNER JOIN "producto_localidad" ON "localidad"."id"="producto_localidad"."localidad_id" AND "localidad"."codigo"=$1 INNER JOIN "producto" ON "producto"."id"="producto_localidad"."producto_id"', [req.query.localidad_codigo])
+      .then(function (data)
+      {
+            res.send (JSON.stringify(data));
+      })
+      .catch(function(error)
+      {
+            res.send ({result: false});
+      })
+  },
+
   formulario: function(req, res, next) {
     res.render('app/formulariodemanda', {
       isAuthenticated: req.isAuthenticated(),
