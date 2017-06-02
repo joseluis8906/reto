@@ -77,6 +77,8 @@ $(document).ready(function() {
       })
     }
   });
+
+  setTimeout(ConsumoYa.mapa(),2000);
 });
 
 function cesar_mapa ()
@@ -133,16 +135,21 @@ function departamento ()
 
 ConsumoYa = {
 
-  enviarPOST: function(url, parametro, valor, callBack){
+  enviarPOST: function(url, parametro, valor, callBack) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", url);
-    xhttp.onreadystatechange = function(){
-      if(this.readyState === 4 && this.status == 200){
+    xhttp.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status == 200) {
         callBack(JSON.parse(xhttp.responseText));
       }
     };
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(parametro + "=" + encodeURIComponent(JSON.stringify(valor)));
+  },
+
+  mapa: function(){
+    var svg = document.getElementById("cesar-mapa").getSVGDocument();
+    console.log(svg);
   }
 
 

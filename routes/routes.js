@@ -28,5 +28,7 @@ router.get('/app', AuthMiddleware.isLogged, controllers.HomeController.indexApp)
 
 //localidad
 router.post('/app/localidad/insert', AuthMiddleware.isLogged, controllers.LocalidadController.insert);
+router.get('/app/localidad', AuthMiddleware.isLogged, controllers.LocalidadController.formulario);
+router.get('/app/localidad-file', AuthMiddleware.isLogged, controllers.LocalidadController.cargaMasiva);
 
 module.exports = router;

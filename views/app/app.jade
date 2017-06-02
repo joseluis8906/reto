@@ -73,6 +73,6 @@ block contenido
   script(src="../assets/js/jquery-jvectormap.js")
   script(src="../assets/js/app.js", type="text/javascript")
   script(type="text/javascript").
-    //ConsumoYa.initVectorMap();
     ConsumoYa.enviarPOST("localidad/insert", "info", {nombre:"gamarra",poblacion:15000}, function(data){console.log(data);});
+    //ConsumoYa.mapa();
     

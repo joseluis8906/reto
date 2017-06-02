@@ -20,5 +20,5 @@ module.exports = {
       isAuthenticated: req.isAuthenticated(),
       user: req.user
     })
-  }
+  },
 }
