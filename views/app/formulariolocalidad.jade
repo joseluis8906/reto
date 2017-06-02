@@ -14,7 +14,7 @@ block contenido
             span(class="icon-bar")
             span(class="icon-bar")
             span(class="icon-bar")
-          a(class="navbar-brand" href="#") Inicio
+          a(class="navbar-brand" href="#") Municipio
         div(id="saludo", class="nav navbar-nav navbar-right", style="margin-right:30px")
           h4(id="saludo-contenido", style="text-align:right")
 
@@ -37,3 +37,5 @@ block contenido
    script(src="../assets/js/material-dashboard.js")
    script(src="../assets/js/jquery-jvectormap.js")
    script(src="../assets/js/app.js", type="text/javascript")
+   script.
+    ConsumoYa.enviarPOST("app/localidad/insert", "info", {nombre:"gamarra",poblacion:15000}, function(data){console.log(data);});
