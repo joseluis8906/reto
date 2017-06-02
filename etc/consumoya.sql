@@ -25,9 +25,7 @@ CREATE TABLE IF NOT EXISTS "producto"
 (
     "id" BIGSERIAL PRIMARY KEY,
     "codigo" TEXT UNIQUE,
-    "nombre" TEXT,
-    "precio" DECIMAL,
-    "embalaje" TEXT
+    "nombre" TEXT
 );
 
 CREATE TABLE IF NOT EXISTS "producto_localidad"
@@ -50,5 +48,7 @@ CREATE TABLE IF NOT EXISTS "proveedor_producto"
     "proveedor_id" BIGINT REFERENCES "proveedor" ("id") ON UPDATE CASCADE ON DELETE CASCADE,
     "producto_id" BIGINT REFERENCES "producto" ("id") ON UPDATE CASCADE ON DELETE CASCADE,
     "origen" TEXT,
-    "cantidad" INTEGER
+    "cantidad" INTEGER,
+    "precio" DECIMAL,
+    "embalaje" INTEGER
 )

@@ -6,15 +6,15 @@ module.exports = {
   insert: function(req, res, next) 
   {
       var info = JSON.parse(req.body.info);
-      if(info.codigo && info.nombre && info.poblacion && info.altitud && info.temperatura && info.superficie && info.fundacion)
+      if(info.codigo && info.nombre && info.origen)
       {
-          db.one('INSERT INTO "localidad"("codigo", "nombre", "poblacion", "altitud", "temperatura", "superficie", "fundacion")VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"', [info.codigo, info.nombre, info.poblacion, info.altitud, info.temperatura, info.superficie, info.fundacion])
+          db.one('INSERT INTO "proveedor"("codigo", "nombre", "origen") VALUES($1, $2, $3) RETURNING "id"', [info.codigo, info.nombre, info.origen])
           .then(data => {
               res.send({result: true});
           })
           .catch(error => {
               console.log (error);
-              db.one('UPDATE "localidad" SET "nombre"=$1, "poblacion"=$2, "altitud"=$3, "temperatura"=$4, "superficie"=$5, "fundacion"=$6 WHERE "codigo"=$7 RETURNING "id"', [info.nombre, info.poblacion, info.altitud, info.temperatura, info.superficie, info.fundacion, info.codigo])
+              db.one('UPDATE "proveedor" SET "nombre"=$1, "origen"=$2 WHERE "codigo"=$3 RETURNING "id"', [info.nombre, info.origen, info.codigo])
               .then(data => {
                   res.send({result: true});
               })
@@ -33,7 +33,7 @@ module.exports = {
 
   select: function(req, res, next)
   {      
-      db.one ('SELECT "nombre", "poblacion", "altitud", "temperatura", "superficie", "fundacion" FROM "localidad" WHERE "codigo"=$1', [req.query.codigo])
+      db.one ('SELECT "nombre", "origen" FROM "proveedor" WHERE "codigo"=$1', [req.query.codigo])
       .then(function(data)
       {
           res.send (JSON.stringify(data));
@@ -45,14 +45,14 @@ module.exports = {
   },
 
   formulario: function(req, res, next) {
-    res.render('app/formulariolocalidad', {
+    res.render('app/formularioproveedor', {
       isAuthenticated: req.isAuthenticated(),
       user: req.user
     });
   },
 
   cargaMasiva: function(req, res, next) {
-    res.render('app/formulariolocalidadmasiva', {
+    res.render('app/formularioproveedormasiva', {
       isAuthenticated: req.isAuthenticated(),
       user: req.user
     });
