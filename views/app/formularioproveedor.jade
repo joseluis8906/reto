@@ -45,26 +45,26 @@ block contenido
                         span(class="input-group-addon")
                           i(class="material-icons") format_list_numbered
                         div(id="lbcod" class="form-group label-floating")
-                          label(class="control-label") Codigo
-                          input(id="codigo" type="numeric" class="form-control")
+                          label(class="control-label") Nit/C.C
+                          input(id="codigo" type="numeric" class="form-control" require)
 
                       div(class="input-group")
                         span(class="input-group-addon")
                           i(class="material-icons") group
                         div(id="lbnomb" class="form-group label-floating")
                           label(class="control-label") Nombre
-                          input(id="nombre" type="numeric" class="form-control")
+                          input(id="nombre" type="numeric" class="form-control" require)
 
                       div(class="input-group")
                         span(class="input-group-addon")
                           i(class="material-icons") directions_car
                         div(id="lborg" class="form-group label-floating")
                           label(class="control-label") Origen
-                          input(id="origen" type="numeric" class="form-control")
+                          input(id="origen" type="numeric" class="form-control" require)
 
               div(class="wizard-footer")
                 div(class="pull-right")
-                  div(class='btn btn-next btn-fill btn-rose btn-wd' id='guardar' onclick="javascript:enviar();") Guardar
+                  div(class='btn btn-next btn-fill btn-rose btn-wd' id='guardar' onclick="javascript:insertar();") Guardar
                 div(class="clearfix")
 
 

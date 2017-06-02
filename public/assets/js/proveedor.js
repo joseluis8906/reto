@@ -1,7 +1,7 @@
 function reset() {
   var foto = document.getElementById('bandera');
   foto.src = "../assets/img/image_placeholder.jpg";
-  $('#codigo').val();
+  $('#codigo').val("");
   $("#nombre").val("");
   $("#origen").val("");
   $('#lbcod').addClass("is-empty");
@@ -18,22 +18,21 @@ function msjOK() {
 }
 
 $('#codigo').keyup(function() {
-    console.log($(this).val());
+  
 });
 
-function buscarCodigo() {
-  ConsumoYa.enviarGET("localidad/select", "codigo", municipio.children[municipio.selectedIndex].value, function(data) {
+
+
+function insertar() {
+  var datos ={
+    codigo: $("#codigo").val(),
+    nombre: $("#nombre").val(),
+    origen: $("#origen").val(),
+  };
+  ConsumoYa.enviarPOST("/app/proveedores/insert", "info", datos, function(data) {
     if (data.result !== false) {
-      $("#altitud").val(data.altitud);
-      $("#temperatura").val(data.temperatura);
-      $("#poblacion").val(data.poblacion);
-      $("#superficie").val(data.superficie);
-      $("#fundacion").val(data.fundacion);
-      $('#lbalt').removeClass("is-empty");
-      $("#lbpbl").removeClass("is-empty");
-      $("#lbsup").removeClass("is-empty");
-      $("#lbdtemp").removeClass("is-empty");
-      $("#lbfun").removeClass("is-empty");
+      reset();
+      msjOK();
     }
   });
 }
