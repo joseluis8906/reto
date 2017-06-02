@@ -139,7 +139,7 @@ function departamento()
     }
   }
 
-  ConsumoYa.enviarGET("app/localidad/select", "codigo", this.codigo, function(data){
+  ConsumoYa.enviarGET("/app/localidad/select", "codigo", this.codigo, function(data){
     $("#MunNom").text(data.nombre);
     $("#MunPob").text(data.poblacion);
     $("#MunAlt").text(data.altitud);
