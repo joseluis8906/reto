@@ -9,7 +9,7 @@ module.exports = {
       console.log(info);
       if(info.origen && info.cantidad && info.precio && info.embalaje && info.proveedor_codigo && info.producto_codigo)
       {
-          db.one('INSERT INTO "proveedor_producto"("proveedor_id", "producto_id", "origen", "cantidad", "precio", "embalaje") SELECT "proveedor"."id", "producto"."id", $1 FROM "proveedor" INNER JOIN "producto" ON "proveedor"."codigo"=$5 AND "producto"."codigo"=$6 RETURNING "id"', [info.origen, info.cantidad, info.precio, info.embalaje, info.proveedor_codigo, info.producto_codigo])
+          db.one('INSERT INTO "proveedor_producto"("proveedor_id", "producto_id", "origen", "cantidad", "precio", "embalaje") SELECT "proveedor"."id", "producto"."id", $1, $2, $3, $4 FROM "proveedor" INNER JOIN "producto" ON "proveedor"."codigo"=$5 AND "producto"."codigo"=$6 RETURNING "id";', [info.origen, info.cantidad, info.precio, info.embalaje, info.proveedor_codigo, info.producto_codigo])
           .then(data => {
               res.send({result: true});
           })
