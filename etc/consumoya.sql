@@ -53,5 +53,6 @@ CREATE TABLE IF NOT EXISTS "proveedor_producto"
     "origen" TEXT,
     "cantidad" INTEGER,
     "precio" DECIMAL,
-    "embalaje" INTEGER
+    "embalaje" INTEGER,
+    UNIQUE(proveedor_id, producto_id)
 )
