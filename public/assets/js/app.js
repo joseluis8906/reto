@@ -112,22 +112,41 @@ function cesar_mapa() {
   window.dptos[24].style.fill = "rgb(76, 175, 80)";
 
   for (var i = 0; i < dptos.length; i++) {
-    //var item = dptos[i];
-     //item.append("<title>"+item.id+"</title>");
     dptos[i].onclick = departamento;
+    if (i<10)
+    {
+      dptos[i].codigo="00"+i
+    }
+    else {
+      dptos[i].codigo="0"+i
+    }
+
   }
 }
 
-function departamento() {
-  for (var i = 0; i < window.dptos.length; i++) {
+function departamento()
+{
 
-    if (window.dptos[i].id === this.id) {
+  for (var i = 0; i < window.dptos.length; i++)
+   {
+    if (window.dptos[i].id === this.id)
+    {
       window.dptos[i].style.fill = "rgb(76, 175, 80)";
-      //data-toggle="tooltip" title="Hooray!"
-    } else {
+    }
+    else
+    {
       window.dptos[i].style.fill = "rgb(249, 249, 249)";
     }
   }
+
+  ConsumoYa.enviarGET("app/localidad/select", "codigo", this.codigo, function(data){
+    $("#MunNom").text(data.nombre);
+    $("#MunPob").text(data.poblacion);
+    $("#MunAlt").text(data.altitud);
+    $("#MunFun").text(data.fundacion);
+    $("#MunSup").text(data.superficie);
+    $("#MunTem").text(data.temperatura);
+  })
 }
 
 ConsumoYa = {
