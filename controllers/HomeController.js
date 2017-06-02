@@ -1,11 +1,32 @@
 module.exports = {
   //funciones del controlador
   index: function(req, res, next) {
+<<<<<<< HEAD
     res.render('login', 
     {
             message: req.flash('info'),
             authmessage: req.flash('authmessage'),
             verify: req.flash('verify')
     });
+=======
+    res.render('login', {
+      message: req.flash('info'),
+      authmessage: req.flash('authmessage'),
+      verify: req.flash('verify')
+    });
+  },
+
+  registro: function(req, res, next) {
+    res.render('registro', {
+      message: req.flash('info')
+    })
+  },
+
+  indexApp: function(req, res, next) {
+    res.render('app/app', {
+      isAuthenticated: req.isAuthenticated(),
+      user: req.user
+    })
+>>>>>>> 2864874f24a425462dc14aad44dc136add8d8901
   }
 }
