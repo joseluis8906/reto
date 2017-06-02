@@ -23,7 +23,7 @@ block contenido
         div(class="col-sm-8 col-sm-offset-2")
           div(class="wizard-container")
             div(class="card wizard-card" data-color="rose" id="wizardProfile")
-              
+
               div(class="wizard-header")
                 h3(class="wizard-title") Municipio
                 h5 Formulario de ingreso de poblacion
@@ -38,17 +38,18 @@ block contenido
                     div(class="col-sm-4 col-sm-offset-1")
                       div(class="picture-container")
                         div(class="picture" style="height:100%!important;width:100%!important;border-radius: 5%!important;")
-                          img(src="../assets/img/flags/001.png" class="picture-src" id="bandera" title="")
+                          img(src="../assets/img/image_placeholder.jpg" class="picture-src" id="bandera" title="")
                     div(class="col-sm-6")
-                      
+
                       div(class="col-sm-6 ")
                         div(class="input-group")
                           span(class="input-group-addon")
                             i(class="material-icons") flag
                           div(class="form-group label-floating")
-                            
+
                             label(class="control-label") Municipio
                             select(id="codigo" class="form-control valid" aria-invalid="false" onchange="javascript:cambiarSelect();")
+                              option(url="../assets/img/image_placeholder.jpg" value="") 
                               option(value="001", url="../assets/img/flags/001.png") Aguachica
                               option(value="002", url="../assets/img/flags/002.png") Agustín Codazzi
                               option(value="003", url="../assets/img/flags/003.png") Astrea
@@ -75,51 +76,112 @@ block contenido
                               option(value="024", url="../assets/img/flags/024.png") Tamalameque
                               option(value="025", url="../assets/img/flags/025.png") Valledupar
                             span(class="material-input")  
-                        
+
                       div(class="input-group")
                         span(class="input-group-addon")
                           i(class="material-icons") import_export
-                        div(class="form-group label-floating")
-                          label(class="control-label") Altitud
+                        div(id="lbalt" class="form-group label-floating")
+                          label(class="control-label") Altitud (m.s.n.m)
                           input(id="altitud" type="numeric" class="form-control")
-                      
+
                       div(class="col-sm-6")    
                         div(class="input-group")
                           span(class="input-group-addon")
                             i(class="material-icons") wb_sunny
-                          div(class="form-group label-floating")
+                          div(id="lbdtemp" class="form-group label-floating")
                             label(class="control-label") Temperatura °C
-                            input(id="altitud" type="numeric" class="form-control")
-                            
+                            input(id="temperatura" type="numeric" class="form-control")
+
                       div(class="input-group")
                         span(class="input-group-addon")
                           i(class="material-icons") group
-                        div(class="form-group label-floating")
+                        div(id="lbpbl" class="form-group label-floating")
                           label(class="control-label") Poblacion
                           input(id="poblacion" type="numeric" class="form-control")
-                      
+
                       div(class="col-sm-6")      
                         div(class="input-group")
                           span(class="input-group-addon")
                             i(class="material-icons") crop
-                          div(class="form-group label-floating")
+                          div(id="lbsup" class="form-group label-floating")
                             label(class="control-label") Superficie (Km2)
-                            input(id="poblacion" type="numeric" class="form-control")
-                            
+                            input(id="superficie" type="numeric" class="form-control")
+
+                      div(class="input-group")
+                        span(class="input-group-addon")
+                          i(class="material-icons") person
+                        div(id="lbfun" class="form-group label-floating")
+                          label(class="control-label") Fundacion
+                          input(id="fundacion" type="numeric" class="form-control")
+
               div(class="wizard-footer")  
                 div(class="pull-right")
-                  div(class='btn btn-next btn-fill btn-rose btn-wd' id='guardar') Guardar
+                  div(class='btn btn-next btn-fill btn-rose btn-wd' id='guardar' onclick="javascript:enviar();") Guardar
                 div(class="clearfix")
-                        
-              
-                
+
+
    include ../templates/footer
-   script(type="text/javascript").
+  script(type="text/javascript").
     ConsumoYa.initMaterialWizard();
+
+    function reset(){
+      var foto = document.getElementById('bandera'); 
+      foto.src = "../assets/img/image_placeholder.jpg";
+      $('#codigo').val();
+      $("#altitud").val("");
+      $("#temperatura").val("");
+      $("#poblacion").val("");
+      $("#superficie").val("");
+      $("#fundacion").val("");
+      $('#lbalt').addClass("is-empty");
+      $("#lbpbl").addClass("is-empty");
+      $("#lbsup").addClass("is-empty");
+      $("#lbdtemp").addClass("is-empty");
+      $("#lbfun").addClass("is-empty");
+    }
+
+    function msjOK(){
+      swal({
+        title: "Guardado exitoso!",
+        buttonsStyling: false,
+        confirmButtonClass: "btn btn-success"
+          });
+    }
+
     function cambiarSelect() { 
       var foto = document.getElementById('bandera'); 
       var municipio = document.getElementById('codigo');
+
+      if(municipio.children[municipio.selectedIndex].value == ""){
+        reset();
+      }
+
       foto.src = municipio.children[municipio.selectedIndex].getAttribute('url');
-      ConsumoYa.enviarGET("app/localidad/")
+      ConsumoYa.enviarGET("localidad/select","codigo", municipio.children[municipio.selectedIndex].value, function(data){
+        if(data.result !== false){
+          $("#altitud").val(data.altitud);
+          $("#temperatura").val(data.temperatura);
+          $("#poblacion").val(data.poblacion);
+          $("#superficie").val(data.superficie);
+          $("#fundacion").val(data.fundacion);
+          $('#lbalt').removeClass("is-empty");
+          $("#lbpbl").removeClass("is-empty");
+          $("#lbsup").removeClass("is-empty");
+          $("#lbdtemp").removeClass("is-empty");
+          $("#lbfun").removeClass("is-empty");
+        }
+      });
     }
-    //ConsumoYa.enviarPOST("app/localidad/insert", "info", {nombre:"gamarra",poblacion:15000}, function(data){console.log(data);});
+    function enviar(){
+      var municipio = document.getElementById('codigo');
+      var consult = {
+        codigo: $("#codigo").val(),
+        nombre: municipio.children[municipio.selectedIndex].text,
+        poblacion: $("#poblacion").val(),
+        altitud: $("#altitud").val(),
+        temperatura: $("#temperatura").val(),
+        superficie: $("#superficie").val(),
+        fundacion: $("#fundacion").val()
+      }
+      ConsumoYa.enviarPOST("localidad/insert", "info", consult, function(data){municipio.selectedIndex=0; reset();msjOK();});
+    }
