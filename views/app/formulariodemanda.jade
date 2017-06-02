@@ -1,0 +1,109 @@
+extends ../templates/appDefault
+
+block contenido
+  div(class="main-panel")
+    nav(class="navbar navbar-transparent navbar-absolute")
+      div( class="container-fluid")
+        div(class="navbar-minimize")
+          button(id="minimizeSidebar", class="btn btn-round btn-white btn-fill btn-just-icon")
+            i(class="material-icons visible-on-sidebar-regular") more_vert
+            i(class="material-icons visible-on-sidebar-mini") view_list
+        div(class="navbar-header")
+          button(type="button" class="navbar-toggle" data-toggle="collapse")
+            span(class="sr-only") Toggle navigation
+            span(class="icon-bar")
+            span(class="icon-bar")
+            span(class="icon-bar")
+          a(class="navbar-brand" href="#") Demanda
+        div(id="saludo", class="nav navbar-nav navbar-right", style="margin-right:30px")
+          h4(id="saludo-contenido", style="text-align:right")
+
+    div(class="content")
+      div(class="container-fluid")
+        div(class="col-sm-8 col-sm-offset-2")
+          div(class="wizard-container")
+            div(class="card wizard-card" data-color="rose" id="wizardProfile")
+
+              div(class="wizard-header")
+                h3(class="wizard-title") Demanda
+                h5 Formulario de ingreso de demanda
+              div(class="wizard-navigation")
+                ul
+                  li
+                    a(data-toggle="tab", href="#formulario") Ingresar
+              div(class="tab-content")
+                div(class="tab-pane" id="formulario")
+                  div(class="row")
+                    h4(class="info-text") Ingrese la informacion solicitada.
+                    div(class="col-sm-4 col-sm-offset-1")
+                      div(class="picture-container")
+                        div(class="picture" style="height:100%!important;width:100%!important;border-radius: 5%!important;")
+                          img(src="../assets/img/image_placeholder.jpg" class="picture-src" id="bandera" title="")
+                    div(class="col-sm-6")
+
+                      div(class="col-sm-6 ")
+                        div(class="input-group")
+                          span(class="input-group-addon")
+                            i(class="material-icons") flag
+                          div(id="lbcod" class="form-group label-floating")
+                            label(class="control-label") Municipio
+                            select(id="codigo" class="form-control valid" aria-invalid="false" onchange="javascript:cambiarSelect();")
+                              option(url="../assets/img/image_placeholder.jpg" value="") 
+                              option(value="001", url="../assets/img/flags/001.png") Aguachica
+                              option(value="002", url="../assets/img/flags/002.png") Agustín Codazzi
+                              option(value="003", url="../assets/img/flags/003.png") Astrea
+                              option(value="004", url="../assets/img/flags/004.png") Becerril
+                              option(value="005", url="../assets/img/flags/005.png") Bosconia
+                              option(value="006", url="../assets/img/flags/006.png") Chimichagua
+                              option(value="007", url="../assets/img/flags/007.png") Chiriguana
+                              option(value="008", url="../assets/img/flags/008.png") Curumani
+                              option(value="009", url="../assets/img/flags/009.png") El Copey
+                              option(value="010", url="../assets/img/flags/010.png") El Paso
+                              option(value="011", url="../assets/img/flags/011.png") Gamarra
+                              option(value="012", url="../assets/img/flags/012.png") González
+                              option(value="013", url="../assets/img/flags/013.png") La Gloria
+                              option(value="014", url="../assets/img/flags/014.png") La Jagua de Ibirico
+                              option(value="015", url="../assets/img/flags/015.png") La Paz
+                              option(value="016", url="../assets/img/flags/016.png") Manaure Balcón del Cesar
+                              option(value="017", url="../assets/img/flags/017.png") Pailitas
+                              option(value="018", url="../assets/img/flags/018.png") Pelaya
+                              option(value="019", url="../assets/img/flags/019.png") Pueblo Bello
+                              option(value="020", url="../assets/img/flags/020.png") Rio de Oro
+                              option(value="021", url="../assets/img/flags/021.png") San Alberto
+                              option(value="022", url="../assets/img/flags/022.png") San Diego
+                              option(value="023", url="../assets/img/flags/023.png") San Martin
+                              option(value="024", url="../assets/img/flags/024.png") Tamalameque
+                              option(value="025", url="../assets/img/flags/025.png") Valledupar
+                            span(class="material-input")  
+
+                      div(class="col-sm-6 ")
+                        div(class="input-group")
+                          span(class="input-group-addon")
+                            i(class="material-icons") flag
+                          div(id="lbcod" class="form-group label-floating")
+                            label(class="control-label") Productos
+                            select(id="producto" class="form-control valid" aria-invalid="false" onchange="javascript:cambiarSelect();")
+                              option(url="../assets/img/image_placeholder.jpg" value="")
+                            span(class="material-input")  
+                                  
+                      div(class="input-group")
+                        span(class="input-group-addon")
+                          i(class="material-icons") import_export
+                        div(id="lbalt" class="form-group label-floating")
+                          label(class="control-label") Altitud (m.s.n.m)
+                          input(id="altitud" type="numeric" class="form-control")
+
+                          
+                            
+
+              div(class="wizard-footer")  
+                div(class="pull-right")
+                  div(class='btn btn-next btn-fill btn-rose btn-wd' id='guardar' onclick="javascript:enviar();") Guardar
+                div(class="clearfix")
+
+
+     include ../templates/footer
+     script(src="../assets/js/demanda.js")
+     script(type="text/javascript").
+        ConsumoYa.initMaterialWizard();
+    

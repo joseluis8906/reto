@@ -38,6 +38,11 @@ router.post('/app/proveedores/insert', controllers.ProveedorController.insert);
 router.get('/app/proveedores/select', controllers.ProveedorController.select);
 router.get('/app/proveedores', AuthMiddleware.isLogged, controllers.ProveedorController.formulario);
 
-router.get('app/productos', AuthMiddleware.isLogged, controllers)
+router.get('/app/productos', AuthMiddleware.isLogged, controllers.ProductoController.formulario);
+router.get('/app/productos/select', controllers.ProductoController.select_all);
+router.post('/app/productos/insert', AuthMiddleware.isLogged, controllers.ProductoController.insert);
+
+router.get('/app/oferta', AuthMiddleware.isLogged, controllers.OfertaController.formulario);
+router.get('/app/demanda', AuthMiddleware.isLogged, controllers.DemandaController.formulario);
 
 module.exports = router;

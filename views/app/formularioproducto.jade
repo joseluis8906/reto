@@ -26,6 +26,18 @@ block contenido
                 i(class="material-icons") assignment
               div(class="card-content")
                 h4(class="card-title") Productos
-        
+                div(class="toolbar")
+                div(class="material-datatables")
+                  table(id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%")
+                    thead
+                      tr
+                        th Còdigo
+                        th Nombre
+                        th(class="disabled-sorting text-right") Acciones
+                    tbody(id="contenido")
+                      
           
-  include ./templates/footer
+  include ../templates/footer
+  script(src="../assets/js/productos.js")
+  script.
+    
