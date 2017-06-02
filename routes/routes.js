@@ -37,6 +37,7 @@ router.get('/app/localidad/select', controllers.LocalidadController.select);
 router.post('/app/proveedores/insert', controllers.ProveedorController.insert);
 router.get('/app/proveedores/select', controllers.ProveedorController.select);
 router.get('/app/proveedores', AuthMiddleware.isLogged, controllers.ProveedorController.formulario);
+router.get('/app/proveedores/selectall', AuthMiddleware.isLogged, controllers.ProveedorController.select_all);
 
 router.get('/app/productos', AuthMiddleware.isLogged, controllers.ProductoController.formulario);
 router.get('/app/productos/select', controllers.ProductoController.select_all);

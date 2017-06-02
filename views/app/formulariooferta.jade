@@ -45,9 +45,9 @@ block contenido
                         div(class="input-group")
                           span(class="input-group-addon")
                             i(class="material-icons") flag
-                          div(id="lbcod" class="form-group label-floating")
+                          div(id="lbprov" class="form-group label-floating")
                             label(class="control-label") Proveedor
-                            select(id="codigo" class="form-control valid" aria-invalid="false" onchange="javascript:cambiarSelect();")
+                            select(id="proveedor" class="form-control valid" aria-invalid="false")
                               option(url="../assets/img/image_placeholder.jpg" value="") 
                             span(class="material-input")  
 
@@ -55,7 +55,7 @@ block contenido
                         div(class="input-group")
                           span(class="input-group-addon")
                             i(class="material-icons") cake
-                          div(id="lbcod" class="form-group label-floating")
+                          div(id="lbprod" class="form-group label-floating")
                             label(class="control-label") Productos
                             select(id="producto" class="form-control valid" aria-invalid="false" onchange="javascript:cambiarSelect();")
                               option(url="../assets/img/image_placeholder.jpg" value="")
@@ -65,35 +65,35 @@ block contenido
                         div(class="input-group")
                           span(class="input-group-addon")
                             i(class="material-icons") local_convenience_store
-                          div(id="lbalt" class="form-group label-floating")
+                          div(id="lborigen" class="form-group label-floating")
                             label(class="control-label") Origen
-                            input(id="altitud" type="numeric" class="form-control")
+                            input(id="origen" type="numeric" class="form-control")
                             
                       
                       div(class="col-sm-6 ")              
                         div(class="input-group")
                             span(class="input-group-addon")
                               i(class="material-icons") shopping_cart
-                            div(id="lbalt" class="form-group label-floating")
+                            div(id="lbcant" class="form-group label-floating")
                               label(class="control-label") Cantidad
-                              input(id="altitud" type="numeric" class="form-control")
+                              input(id="cantidad" type="numeric" class="form-control")
                               
                       div(class="col-sm-6 ")
                         div(class="input-group")
                             span(class="input-group-addon")
                               i(class="material-icons") attach_money
-                            div(id="lbalt" class="form-group label-floating")
+                            div(id="lbprec" class="form-group label-floating")
                               label(class="control-label") Precio
-                              input(id="altitud" type="numeric" class="form-control")
+                              input(id="precio" type="numeric" class="form-control")
                               
                               
                       div(class="col-sm-6 ")
                         div(class="input-group")
                             span(class="input-group-addon")
                               i(class="material-icons") casino
-                            div(id="lbalt" class="form-group label-floating")
+                            div(id="lbembal" class="form-group label-floating")
                               label(class="control-label") Embalaje
-                              input(id="altitud" type="numeric" class="form-control")      
+                              input(id="embalaje" type="numeric" class="form-control")      
 
 
               div(class="wizard-footer")  
@@ -103,7 +103,7 @@ block contenido
 
 
      include ../templates/footer
-     script(src="../assets/js/demanda.js")
+     script(src="../assets/js/oferta.js")
      script(type="text/javascript").
         ConsumoYa.initMaterialWizard();
     
