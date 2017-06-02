@@ -1,0 +1,74 @@
+extends ../templates/appDefault
+
+block contenido
+  div(class="main-panel")
+    nav(class="navbar navbar-transparent navbar-absolute")
+      div( class="container-fluid")
+        div(class="navbar-minimize")
+          button(id="minimizeSidebar", class="btn btn-round btn-white btn-fill btn-just-icon")
+            i(class="material-icons visible-on-sidebar-regular") more_vert
+            i(class="material-icons visible-on-sidebar-mini") view_list
+        div(class="navbar-header")
+          button(type="button" class="navbar-toggle" data-toggle="collapse")
+            span(class="sr-only") Toggle navigation
+            span(class="icon-bar")
+            span(class="icon-bar")
+            span(class="icon-bar")
+          a(class="navbar-brand" href="#") Proveedor
+        div(id="saludo", class="nav navbar-nav navbar-right", style="margin-right:30px")
+          h4(id="saludo-contenido", style="text-align:right")
+
+    div(class="content")
+      div(class="container-fluid")
+        div(class="col-sm-8 col-sm-offset-2")
+          div(class="wizard-container")
+            div(class="card wizard-card" data-color="rose" id="wizardProfile")
+
+              div(class="wizard-header")
+                h3(class="wizard-title") Proveedor
+                h5 Formulario de ingreso de Proveedor
+              div(class="wizard-navigation")
+                ul
+                  li
+                    a(data-toggle="tab", href="#formulario") Ingresar 
+              div(class="tab-content")
+                div(class="tab-pane" id="formulario")
+                  div(class="row")
+                    h4(class="info-text") Ingrese la informacion solicitada.
+                    div(class="col-sm-4 col-sm-offset-1")
+                      div(class="picture-container")
+                        div(class="picture" style="height:100%!important;width:100%!important;border-radius: 5%!important;")
+                          img(src="../assets/img/default-avatar.png" class="picture-src" id="bandera" title="")
+                    div(class="col-sm-6")
+
+                      div(class="input-group")
+                        span(class="input-group-addon")
+                          i(class="material-icons") format_list_numbered
+                        div(id="lbcod" class="form-group label-floating")
+                          label(class="control-label") Codigo
+                          input(id="codigo" type="numeric" class="form-control")
+
+                      div(class="input-group")
+                        span(class="input-group-addon")
+                          i(class="material-icons") group
+                        div(id="lbnomb" class="form-group label-floating")
+                          label(class="control-label") Nombre
+                          input(id="nombre" type="numeric" class="form-control")
+
+                      div(class="input-group")
+                        span(class="input-group-addon")
+                          i(class="material-icons") directions_car
+                        div(id="lborg" class="form-group label-floating")
+                          label(class="control-label") Origen
+                          input(id="origen" type="numeric" class="form-control")
+
+              div(class="wizard-footer")
+                div(class="pull-right")
+                  div(class='btn btn-next btn-fill btn-rose btn-wd' id='guardar' onclick="javascript:enviar();") Guardar
+                div(class="clearfix")
+
+
+     include ../templates/footer
+     script(src="../assets/js/proveedor.js")
+     script(type="text/javascript").
+        ConsumoYa.initMaterialWizard();
