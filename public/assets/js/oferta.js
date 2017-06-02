@@ -39,11 +39,7 @@ $(document).ready(function(){
 
 function guardar ()
 {
-    var municipio = $("#municipio").val();
-    var producto = $("#producto").val();
-    var consumo = $("#consumo").val();
-    ConsumoYa.enviarPOST("demanda/insert", "info", {codigo_localidad: municipio, codigo_producto: producto, promedio_consumo: consumo}, function(data){console.log(data);});
-
+    ConsumoYa.enviarPOST("demanda/insert", "info", { proveedor_codigo: $('#proveedor').val(), origen: $("#origen").val(), cantidad: $("#cantidad").val(), precio: $("#precio").val(), embalaje:$("#embalaje").val(), producto_codigo: $("#producto").val() }, function(data){console.log(data);});
     msjOK();
     reset();
 }
