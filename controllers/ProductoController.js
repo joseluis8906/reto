@@ -43,6 +43,19 @@ module.exports = {
       })
   },
 
+  select_all: function(req, res, next)
+  {
+        db.any ('SELECT "codigo", "nombre" FROM "producto"')
+        .then(function(data)
+        {
+              res.send (JSON.stringify(data));
+        })
+        .catch(function(error)
+        {
+            res.send ({result: false});
+        })
+  },
+
   formulario: function(req, res, next) {
     res.render('app/formularioproducto', {
       isAuthenticated: req.isAuthenticated(),
