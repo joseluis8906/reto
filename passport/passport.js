@@ -1,6 +1,6 @@
 var LocalEstrategia = require('passport-local').Strategy;
 var pgp = require('pg-promise')();
-var db = pgp("postgres://reto:reto123456789@172.16.16.72:5432/reto");
+var db = pgp("postgres://reto:reto123456789@127.0.0.1:5432/reto");
 var bcrypt = require('bcryptjs');
 var moment = require('moment');
 

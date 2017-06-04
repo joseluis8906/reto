@@ -20,7 +20,7 @@ block contenido
 
     div(class="content")
       div(class="container-fluid")
-        div(class="col-sm-8 col-sm-offset-2")
+        div(class="col-sm-12")
           div(class="wizard-container")
             div(class="card wizard-card" data-color="rose" id="wizardProfile")
 
@@ -48,7 +48,7 @@ block contenido
                           div(id="lbcod" class="form-group label-floating")
                             label(class="control-label") Municipio
                             select(id="codigo" class="form-control valid" aria-invalid="false" onchange="javascript:cambiarSelect();")
-                              option(url="../assets/img/image_placeholder.jpg" value="") 
+                              option(url="../assets/img/image_placeholder.jpg" value="")
                               option(value="001", url="../assets/img/flags/001.png") Aguachica
                               option(value="002", url="../assets/img/flags/002.png") Agustín Codazzi
                               option(value="003", url="../assets/img/flags/003.png") Astrea
@@ -74,7 +74,7 @@ block contenido
                               option(value="023", url="../assets/img/flags/023.png") San Martin
                               option(value="024", url="../assets/img/flags/024.png") Tamalameque
                               option(value="025", url="../assets/img/flags/025.png") Valledupar
-                            span(class="material-input")  
+                            span(class="material-input")
 
                       div(class="input-group")
                         span(class="input-group-addon")
@@ -83,7 +83,7 @@ block contenido
                           label(class="control-label") Altitud (m.s.n.m)
                           input(id="altitud" type="numeric" class="form-control")
 
-                      div(class="col-sm-6")    
+                      div(class="col-sm-6")
                         div(class="input-group")
                           span(class="input-group-addon")
                             i(class="material-icons") wb_sunny
@@ -98,7 +98,7 @@ block contenido
                           label(class="control-label") Poblacion
                           input(id="poblacion" type="numeric" class="form-control")
 
-                      div(class="col-sm-6")      
+                      div(class="col-sm-6")
                         div(class="input-group")
                           span(class="input-group-addon")
                             i(class="material-icons") crop
@@ -113,7 +113,7 @@ block contenido
                           label(class="control-label") Fundacion
                           input(id="fundacion" type="numeric" class="form-control")
 
-              div(class="wizard-footer")  
+              div(class="wizard-footer")
                 div(class="pull-right")
                   div(class='btn btn-next btn-fill btn-rose btn-wd' id='guardar' onclick="javascript:enviar();") Guardar
                 div(class="clearfix")
@@ -123,4 +123,3 @@ block contenido
      script(src="../assets/js/municipios.js")
      script(type="text/javascript").
         ConsumoYa.initMaterialWizard();
-    

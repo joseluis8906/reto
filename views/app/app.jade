@@ -18,8 +18,8 @@ block contenido
           a(class="navbar-brand" href="#") Inicio
         div(id="saludo", class="nav navbar-nav navbar-right", style="margin-right:30px")
           h4(id="saludo-contenido", style="text-align:right")
-                  
-    
+
+
     div(class="content")
       div(class="container-fluid")
         div(class="row")
@@ -29,7 +29,7 @@ block contenido
                 i(class="material-icons") language
               div(class="card-content")
                 h4(class="card-title") Oferta y demanda del departamento del Cesar
-                div(class="col-md-3", id="tabla-mapa")
+                div(class="col-md-4", id="tabla-mapa")
                   div(class="table-responsive table-sales")
                     table(class="table")
                       thead
@@ -43,10 +43,10 @@ block contenido
                           td Producto 1
                           td(class="text-right") 2.920
                           td(class="text-right") 53.29%
-                          
-                div(class="col-md-4 col-md-offset-1")
-                  object(id="cesar-mapa", class="map", data="../assets/img/cesar.svg", type="image/svg+xml", style="height: auto!important;")
-                
+
+                div(class="col-md-4" style="text-align:center;")
+                  object(id="cesar-mapa", class="map", data="../assets/img/cesar.svg", type="image/svg+xml", style="height: auto!important;margin:auto;")
+
                 div(class="col-md-4")
                   div(class="row")
                     div(class="table-responsive table-sales")
@@ -57,26 +57,24 @@ block contenido
                           td(style="text-align:center; font-weight:bold;") Poblacion
                           td(style="text-align:center; font-weight:bold;") Altitud
                         tr
-                          td(id="MunPob" style="text-align:center") 
-                          td(id="MunAlt" style="text-align:center") 
+                          td(id="MunPob" style="text-align:center")
+                          td(id="MunAlt" style="text-align:center")
                         tr
                           td(style="text-align:center; font-weight:bold;") Superficie
                           td(style="text-align:center; font-weight:bold;" ) Temperatura
                         tr
-                          td(id="MunSup" style="text-align:center") 
-                          td(id="MunTem" style="text-align:center") 
+                          td(id="MunSup" style="text-align:center")
+                          td(id="MunTem" style="text-align:center")
                         tr
                           th(colspan="2" style="text-align:center; font-weight:bold;") Año de Fundacion
                         tr
                           td(id="MunFun" style="text-align:center" colspan="2")
-                  
-                  
-  
+
+
+
 
   include ../templates/footer
   script(type="text/javascript").
     setTimeout(cesar_mapa, 1000);
     //ConsumoYa.enviarPOST("app/localidad/insert", "info", {nombre:"gamarra",poblacion:15000}, function(data){console.log(data);});
     //ConsumoYa.mapa();
-
-    

@@ -1,9 +1,9 @@
 var pgp = require('pg-promise')();
-var db = pgp("postgres://reto:reto123456789@172.16.16.72:5432/reto");
+var db = pgp("postgres://reto:reto123456789@127.0.0.1:5432/reto");
 
 module.exports = {
   //funciones del controlador
-  insert: function(req, res, next) 
+  insert: function(req, res, next)
   {
       var info = JSON.parse(req.body.info);
       console.log(info);
@@ -32,7 +32,7 @@ module.exports = {
   },
 
   select: function(req, res, next)
-  {      
+  {
       db.one ('SELECT "origen", "cantidad", "precio", "embalaje" FROM "proveedor_producto" INNER JOIN "proveedor" ON "proveedor_producto"."proveedor_id"="proveedor"."id" INNER JOIN "producto" ON "proveedor_producto"."producto_id"="producto"."id" AND "producto"."codigo"=$1 AND "proveedor"."codigo"=$2', [req.query.producto_codigo, req.query.proveedor_codigo])
       .then(function(data)
       {

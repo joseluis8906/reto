@@ -1,9 +1,9 @@
 var pgp = require('pg-promise')();
-var db = pgp("postgres://reto:reto123456789@172.16.16.72:5432/reto");
+var db = pgp("postgres://reto:reto123456789@127.0.0.1:5432/reto");
 
 module.exports = {
   //funciones del controlador
-  insert: function(req, res, next) 
+  insert: function(req, res, next)
   {
       var info = JSON.parse(req.body.info);
       if(info.codigo && info.nombre && info.origen)
@@ -32,7 +32,7 @@ module.exports = {
   },
 
   select: function(req, res, next)
-  {      
+  {
       db.one ('SELECT "nombre", "origen" FROM "proveedor" WHERE "codigo"=$1', [req.query.codigo])
       .then(function(data)
       {
@@ -45,7 +45,7 @@ module.exports = {
   },
 
   select_all: function(req, res, next)
-  {      
+  {
       db.any ('SELECT "codigo", "nombre", "origen" FROM "proveedor"')
       .then(function(data)
       {

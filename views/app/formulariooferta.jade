@@ -20,7 +20,7 @@ block contenido
 
     div(class="content")
       div(class="container-fluid")
-        div(class="col-sm-8 col-sm-offset-2")
+        div(class="col-sm-12")
           div(class="wizard-container")
             div(class="card wizard-card" data-color="rose" id="wizardProfile")
 
@@ -48,8 +48,8 @@ block contenido
                           div(id="lbprov" class="form-group label-floating")
                             label(class="control-label") Proveedor
                             select(id="proveedor" class="form-control valid" aria-invalid="false")
-                              option(url="../assets/img/image_placeholder.jpg" value="") 
-                            span(class="material-input")  
+                              option(url="../assets/img/image_placeholder.jpg" value="")
+                            span(class="material-input")
 
                       div(class="col-sm-6 ")
                         div(class="input-group")
@@ -59,25 +59,25 @@ block contenido
                             label(class="control-label") Productos
                             select(id="producto" class="form-control valid" aria-invalid="false")
                               option(url="../assets/img/image_placeholder.jpg" value="")
-                            span(class="material-input")  
-                      
-                      div(class="col-sm-6 ")              
+                            span(class="material-input")
+
+                      div(class="col-sm-6 ")
                         div(class="input-group")
                           span(class="input-group-addon")
                             i(class="material-icons") local_convenience_store
                           div(id="lborigen" class="form-group label-floating")
                             label(class="control-label") Origen
                             input(id="origen" type="numeric" class="form-control")
-                            
-                      
-                      div(class="col-sm-6 ")              
+
+
+                      div(class="col-sm-6 ")
                         div(class="input-group")
                             span(class="input-group-addon")
                               i(class="material-icons") shopping_cart
                             div(id="lbcant" class="form-group label-floating")
                               label(class="control-label") Cantidad
                               input(id="cantidad" type="numeric" class="form-control")
-                              
+
                       div(class="col-sm-6 ")
                         div(class="input-group")
                             span(class="input-group-addon")
@@ -85,18 +85,18 @@ block contenido
                             div(id="lbprec" class="form-group label-floating")
                               label(class="control-label") Precio
                               input(id="precio" type="numeric" class="form-control")
-                              
-                              
+
+
                       div(class="col-sm-6 ")
                         div(class="input-group")
                             span(class="input-group-addon")
                               i(class="material-icons") casino
                             div(id="lbembal" class="form-group label-floating")
                               label(class="control-label") Embalaje
-                              input(id="embalaje" type="numeric" class="form-control")      
+                              input(id="embalaje" type="numeric" class="form-control")
 
 
-              div(class="wizard-footer")  
+              div(class="wizard-footer")
                 div(class="pull-right")
                   div(class='btn btn-next btn-fill btn-rose btn-wd' id='guardar' onclick="javascript:guardar();") Guardar
                 div(class="clearfix")
@@ -106,4 +106,3 @@ block contenido
      script(src="../assets/js/oferta.js")
      script(type="text/javascript").
         ConsumoYa.initMaterialWizard();
-    
